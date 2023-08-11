@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 3000
 
 const app = express()
 app.use(cors())
-const httpServer = createServer(app)
-const io = new Server(httpServer, {
+const server = createServer(app)
+const io = new Server(server, {
   cors: {
     origin: 'http://127.0.0.1:5173/',
     methods: ['GET', 'POST'],
@@ -16,9 +16,12 @@ const io = new Server(httpServer, {
 })
 
 io.on('connection', (socket) => {
-  // ...
+  socket.on('send', (data) => {
+    console.log(data)
+    socket.broadcast.emit('receive', data)
+  })
 })
 
-httpServer.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`)
 })
