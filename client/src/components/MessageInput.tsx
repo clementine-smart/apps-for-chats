@@ -36,7 +36,6 @@ function MessageInput() {
         { message: outgoingMessage, from: 'me' },
       ])
       setOutgoingMessage(() => '')
-      setTyping(() => false)
     }
   }
 
