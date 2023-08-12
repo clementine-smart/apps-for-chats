@@ -17,12 +17,14 @@ function MessageInput() {
 
   function handleSend(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
-    socket.emit('send', { message: outgoingMessage })
-    setIncomingMessage((incomingMessage) => [
-      ...incomingMessage,
-      { message: outgoingMessage, from: 'me' },
-    ])
-    setOutgoingMessage(() => '')
+    if (outgoingMessage.length > 0) {
+      socket.emit('send', { message: outgoingMessage })
+      setIncomingMessage((incomingMessage) => [
+        ...incomingMessage,
+        { message: outgoingMessage, from: 'me' },
+      ])
+      setOutgoingMessage(() => '')
+    }
   }
 
   useEffect(() => {
@@ -50,7 +52,9 @@ function MessageInput() {
         </div>
         <button
           onClick={handleSend}
-          className="border-2 p-2 rounded-lg hover:bg-pink-500"
+          className={`border-2 p-2 rounded-lg  ${
+            outgoingMessage.length <= 0 ? 'cursor-default' : 'hover:bg-pink-500'
+          }`}
         >
           send
         </button>
