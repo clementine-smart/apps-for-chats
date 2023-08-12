@@ -20,6 +20,9 @@ io.on('connection', (socket) => {
     console.log(data)
     socket.broadcast.emit('receive', data)
   })
+  socket.on('typing', (data) => {
+    socket.broadcast.emit('receive_typing', data)
+  })
 })
 
 server.listen(PORT, () => {
