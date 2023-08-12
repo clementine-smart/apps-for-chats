@@ -36,9 +36,7 @@ function MessageInput() {
 
   return (
     <>
-      {incomingMessage.length > 0 && (
-        <Messages incomingMessage={incomingMessage} />
-      )}
+      {incomingMessage.length > 0 && <Messages message={incomingMessage} />}
       <form className="flex gap-4 pt-2">
         <div className="flex flex-col">
           {/* <label htmlFor="message">message</label> */}
