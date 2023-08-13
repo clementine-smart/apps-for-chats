@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import io from 'socket.io-client'
+
+const socket = io('http://localhost:3000/', { transports: ['websocket'] })
 
 interface Props {
   setUserName: React.Dispatch<React.SetStateAction<string>>
@@ -15,6 +18,7 @@ function UserName({ setUserName }: Props) {
   function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
     setUserName(() => userNameInput)
+    socket.emit('enter_chat', { user: userNameInput })
   }
 
   return (

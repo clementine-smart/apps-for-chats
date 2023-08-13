@@ -11,12 +11,17 @@ function Message({ message }: Props) {
   function handleClick() {
     setViewUser((viewUser) => !viewUser)
   }
+  const colour = {
+    me: 'bg-red-700',
+    you: 'bg-green-700',
+    computer: 'bg-slate-400',
+  }
 
   return (
     <div className="flex ">
       <p
         onClick={handleClick}
-        className={`${message.from === 'me' ? 'bg-red-700' : 'bg-green-500'} ${
+        className={`${colour[message.from]} ${
           viewUser && '!bg-zinc-800 !text-zinc-400'
         } p-2 w-fit rounded-lg cursor-pointer`}
       >

@@ -1,6 +1,6 @@
 export interface MessageType {
   message: string
-  from: string
+  from: 'me' | 'you' | 'computer'
   user: string
   thread?: string
 }

@@ -59,6 +59,16 @@ function MessageInput({ userName }: Props) {
         setIncomingTyping(false)
       }
     })
+    socket.on('receive_user', ({ user }) => {
+      setIncomingMessage((incomingMessage) => [
+        ...incomingMessage,
+        {
+          message: `${user} has entered the chat`,
+          from: 'computer',
+          user: 'burner chat',
+        },
+      ])
+    })
   }, [])
 
   return (

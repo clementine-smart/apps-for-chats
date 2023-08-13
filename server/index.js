@@ -26,6 +26,10 @@ io.on('connection', (socket) => {
   socket.on('burn_it', (data) => {
     socket.broadcast.emit('receive_burn', data)
   })
+  socket.on('enter_chat', (data) => {
+    console.log(data)
+    socket.broadcast.emit('receive_user', data)
+  })
 })
 
 server.listen(PORT, () => {
