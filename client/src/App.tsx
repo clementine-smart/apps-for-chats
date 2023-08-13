@@ -7,14 +7,18 @@ function App() {
 
   return (
     <div className="w-full h-full">
-      <h1 className="text-green-300 text-3xl">this is an app for chats</h1>
-      <div>
-        {userName.length > 0 ? (
-          <MessageInput />
-        ) : (
-          <UserName setUserName={setUserName} />
-        )}
+      <div className="flex flex-row items-center gap-2 w-full h-20">
+        <h2>
+          welcome to the <span className="text-red-700 font-bold">burner</span>{' '}
+          chat{' '}
+          {userName ? (
+            <span className="text-red-700 font-bold">{userName}</span>
+          ) : (
+            <UserName setUserName={setUserName} />
+          )}
+        </h2>
       </div>
+      <div>{userName.length > 0 && <MessageInput userName={userName} />}</div>
     </div>
   )
 }

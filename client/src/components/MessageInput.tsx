@@ -4,9 +4,13 @@ import io from 'socket.io-client'
 import { MessageType } from '../types/message'
 import Messages from './Messages'
 
+interface Props {
+  userName: string
+}
+
 const socket = io('http://localhost:3000/', { transports: ['websocket'] })
 
-function MessageInput() {
+function MessageInput({ userName }: Props) {
   const [outgoingMessage, setOutgoingMessage] = useState('')
   const [incomingMessage, setIncomingMessage] = useState<MessageType[]>([])
   const [typing, setTyping] = useState(false)
