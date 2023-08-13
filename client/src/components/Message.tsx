@@ -13,7 +13,7 @@ function Message({ message }: Props) {
   }
   const colour = {
     me: 'bg-red-700',
-    you: 'bg-green-700',
+    you: 'bg-blue-700',
     computer: 'bg-slate-400',
   }
 

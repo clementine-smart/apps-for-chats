@@ -75,11 +75,11 @@ function MessageInput({ userName }: Props) {
     <>
       {incomingMessage.length > 0 && <Messages message={incomingMessage} />}
       {incomingTyping && (
-        <p className={`${'bg-green-500'} p-2 mt-2 w-fit rounded-lg gap-2`}>
+        <p className={`${'bg-blue-800'} p-2 mt-2 w-fit rounded-lg gap-2`}>
           ...
         </p>
       )}
-      <form className="flex gap-4 pt-2">
+      <form className="flex gap-4 pt-2 fixed bottom-4 right-4">
         <div className="flex flex-col">
           {/* <label htmlFor="message">message</label> */}
           <input
@@ -95,7 +95,9 @@ function MessageInput({ userName }: Props) {
         <button
           onClick={handleSend}
           className={`border-2 p-2 rounded-lg  ${
-            outgoingMessage.length <= 0 ? 'cursor-default' : 'hover:bg-pink-500'
+            outgoingMessage.length <= 0
+              ? 'cursor-default'
+              : 'hover:bg-green-700'
           }`}
         >
           send

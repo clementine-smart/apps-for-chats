@@ -15,11 +15,11 @@ function App() {
   }, [])
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full px-4">
       <div className="flex flex-row items-center gap-2 w-full h-20">
         <h2>
           welcome to the <span className="text-red-700 font-bold">burner</span>{' '}
-          chat{' '}
+          chat,{' '}
           {userName ? (
             <span className="text-red-700 font-bold">{userName}</span>
           ) : (
