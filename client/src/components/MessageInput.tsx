@@ -3,6 +3,7 @@ import io from 'socket.io-client'
 
 import { MessageType } from '../types/message'
 import Messages from './Messages'
+import BurnItDown from './BurnItDown'
 
 interface Props {
   userName: string
@@ -89,6 +90,7 @@ function MessageInput({ userName }: Props) {
         >
           send
         </button>
+        <BurnItDown user={userName} />
       </form>
     </>
   )

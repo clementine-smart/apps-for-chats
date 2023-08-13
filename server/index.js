@@ -23,6 +23,9 @@ io.on('connection', (socket) => {
   socket.on('typing', (data) => {
     socket.broadcast.emit('receive_typing', data)
   })
+  socket.on('burn_it', (data) => {
+    socket.broadcast.emit('receive_burn', data)
+  })
 })
 
 server.listen(PORT, () => {

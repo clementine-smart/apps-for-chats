@@ -1,9 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import MessageInput from './components/MessageInput'
 import UserName from './components/UserName'
+import io from 'socket.io-client'
+
+const socket = io('http://localhost:3000/', { transports: ['websocket'] })
 
 function App() {
   const [userName, setUserName] = useState('')
+
+  useEffect(() => {
+    socket.on('receive_burn', () => {
+      window.location.reload()
+    })
+  }, [])
 
   return (
     <div className="w-full h-full">
