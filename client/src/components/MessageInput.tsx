@@ -34,20 +34,21 @@ function MessageInput({ userName }: Props) {
   function handleSend(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
     if (outgoingMessage.length > 0) {
-      socket.emit('send', { message: outgoingMessage })
+      socket.emit('send', { message: outgoingMessage, user: userName })
       setIncomingMessage((incomingMessage) => [
         ...incomingMessage,
-        { message: outgoingMessage, from: 'me' },
+        { message: outgoingMessage, from: 'me', user: userName },
       ])
       setOutgoingMessage(() => '')
     }
   }
 
   useEffect(() => {
-    socket.on('receive', ({ message }) => {
+    socket.on('receive', ({ message, user }) => {
+      console.log(user)
       setIncomingMessage((incomingMessage) => [
         ...incomingMessage,
-        { message: message, from: 'you' },
+        { message: message, from: 'you', user: user },
       ])
     })
     socket.on('receive_typing', (typing) => {

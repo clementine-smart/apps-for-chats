@@ -27,7 +27,7 @@ function UserName({ setUserName }: Props) {
       />
       <button
         onClick={handleSubmit}
-        className="rounded-lg py-1 px-3 bg-red-600 text-white"
+        className="rounded-lg py-1 px-3 bg-black text-white"
       >
         let me in
       </button>
